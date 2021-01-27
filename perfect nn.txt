@@ -1,0 +1,28 @@
+NeuralNetwork {input_nodes: 5, hidden_nodes: 4, output_nodes: 1, weights_ih: Matrix, weights_ho: Matrix, …}
+activation_function: ActivationFunction {func: ƒ, dfunc: ƒ}
+bias_h: Matrix {rows: 4, cols: 1, data: Array(4)}
+bias_o: Matrix {rows: 1, cols: 1, data: Array(1)}
+hidden_nodes: 4
+input_nodes: 5
+learning_rate: 0.1
+output_nodes: 1
+weights_ho: Matrix
+cols: 4
+data: [Array(4)]
+rows: 1
+__proto__: Object
+weights_ih: Matrix
+cols: 5
+data: (4) [Array(5), Array(5), Array(5), Array(5)]
+rows: 4
+__proto__: Object
+__proto__:
+constructor: class NeuralNetwork
+copy: ƒ copy()
+mutate: ƒ mutate(func)
+predict: ƒ predict(input_array)
+serialize: ƒ serialize()
+setActivationFunction: ƒ setActivationFunction(func = sigmoid)
+setLearningRate: ƒ setLearningRate(learning_rate = 0.1)
+train: ƒ train(input_array, target_array)
+__proto__: Object

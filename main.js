@@ -43,16 +43,16 @@ function setup() {
     var image = loadImage('https://i.imgur.com/hD4yNyv.png');
     var image2 = loadImage('https://i.imgur.com/rmLMNEw.png');
     car = createSprite(
-        250, 135);
+        250, 145);
         car.addImage('goed', image);
         car.addImage('fout', image2);
         car.addAnimation('goed', image)
     
-    brain =  new NeuralNetwork(5,4,1)
-    brain2 = new NeuralNetwork(5,4,1)
-    brain3 = new NeuralNetwork(5,4,1)
-    brain4 = new NeuralNetwork(5,4,1)
-    brain5 = new NeuralNetwork(5,4,1)
+    brain =  new NeuralNetwork(4,4,1)
+    brain2 = new NeuralNetwork(4,4,1)
+    brain3 = new NeuralNetwork(4,4,1)
+    brain4 = new NeuralNetwork(4,4,1)
+    brain5 = new NeuralNetwork(4,4,1)
 
 
     checkpoints = new Group();
@@ -93,7 +93,6 @@ function setup() {
     background(200);
     drawSprites();
     movement();
-    raylen[4] = car.rotation;
     text (besttime, 150 ,50,50,50)
     text (keer , 50,50,50,50)
     text (roundd , 100,50,50,50)
@@ -119,30 +118,35 @@ function setup() {
         time1 += 1;
         if (car.overlap(checkpoints)){
             time1 += 50;
+            setTimeout(1000)
         }
     }
     if (keer == 2){
         time2+=1;
         if (car.overlap(checkpoints)){
             time2 += 50;
+            setTimeout(1000)
         }
     }
     if (keer == 3){
         time3+=1;
         if (car.overlap(checkpoints)){
             time3 += 50;
+            setTimeout(1000)
         }
     }
     if (keer == 4){
         time4+=1;
         if (car.overlap(checkpoints)){
             time4 += 50;
+            setTimeout(1000)
         }
     }
     if (keer == 5){
         time5+=1;
         if (car.overlap(checkpoints)){
             time5 += 50;
+            setTimeout(1000)
         }
     }
   }
@@ -156,7 +160,7 @@ function setup() {
               keer += 1;
               car.rotation = 0;
               car.position.x = 250;
-              car.position.y = 135;
+              car.position.y = 145;
               mutation();
           }
       }
@@ -264,41 +268,14 @@ function setup() {
                 if (keer == 5){
                 output = brain5.predict(raylen); 
                 }
-                if (output > 0.5){
+                if (output > 0.55){
                     moveL = 1;
                 }
-                if (output < 0.5){
+                if (output < 0.45){
                     moveR = 1;
                 }
                 text (Math.round(output * 10), 200 ,50,50,50)
                 console.log(output)
-                if (Math.round(output * 10) > 0.9 || Math.round(output * 10) < 0.1){
-                        if (keer == 1){
-                        brain =  new NeuralNetwork(5,4,1)
-                        }
-                        if (keer == 2){
-                        brain2 =  new NeuralNetwork(5,4,1);
-                        }
-                        if (keer == 3){
-                        brain3 =  new NeuralNetwork(5,4,1);
-                        }
-                        if (keer == 4){
-                        brain4 =  new NeuralNetwork(5,4,1) 
-                        }
-                        if (keer == 5){
-                        brain5 =  new NeuralNetwork(5,4,1); 
-                        }
-                    brain =  new NeuralNetwork(5,4,1)
-                    brain2 = new NeuralNetwork(5,4,1)
-                    brain3 = new NeuralNetwork(5,4,1)
-                    brain4 = new NeuralNetwork(5,4,1)
-                    brain5 = new NeuralNetwork(5,4,1)
-                    bestbrain = brain                
-                }
-
-    if (3< 5){
-
-    } 
   }
   function mutatee(x) {
     if (random(1) < 0.1) {
